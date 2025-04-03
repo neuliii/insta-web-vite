@@ -21,8 +21,9 @@ jobs:
 
       - name: S3 기존 파일들 전체 삭제 후 새로 업로드
         run: |
-	        aws s3 rm --recursive s3://insta-web-neul
-		      aws s3 cp ./ s3://insta-web-neul/ --recursive
+          aws s3 rm s3://insta-web-neul --recursive || echo "S3 삭제 실패 또는 버킷 없음"
+          aws s3 cp ./ s3://insta-web-neul/ --recursive
 
       - name: Cloudfront 캐시 무효화
-        run: aws cloudfront create-invalidation --distribution-id ED5O7HAB3C1QS --paths "/*"
+        run: |
+          aws cloudfront create-invalidation --distribution-id ED5O7HAB3C1QS --paths "/*" || echo "CloudFront 캐시 무효화 실패"
