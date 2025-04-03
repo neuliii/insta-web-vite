@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Github Repository 파일 출력하기 (확인하기)
-        uses: ls
+        run: ls
