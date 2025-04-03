@@ -22,7 +22,7 @@ jobs:
       - name: S3 기존 파일들 전체 삭제 후 새로 업로드
         run: |
           aws s3 rm s3://insta-web-neul --recursive || echo "S3 삭제 실패 또는 버킷 없음"
-          aws s3 cp ./ s3://insta-web-neul/ --recursive --content-type "text/javascript"
+          aws s3 cp ./ s3://insta-web-neul/ --recursive --guess-mime-type --no-sign-request
 
       - name: Cloudfront 캐시 무효화
         run: |
