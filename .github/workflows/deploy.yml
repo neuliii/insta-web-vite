@@ -23,4 +23,3 @@ jobs:
     steps: 
       - name: Hello World 찍기 # Step에 이름 붙이는 기능
         run: echo "Hello World" # 실행시킬 명령어 작성
-        
